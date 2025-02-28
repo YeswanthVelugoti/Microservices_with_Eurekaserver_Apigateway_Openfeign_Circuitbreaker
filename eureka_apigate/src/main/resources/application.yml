@@ -1,0 +1,16 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}  # Ensures a readable instance ID
+  client:
+    register-with-eureka: false  # This is a Eureka server, so it doesn't register itself
+    fetch-registry: false  # It doesn't fetch instances from itself
+  server:
+    enable-self-preservation: true  # Keeps instances alive even if they don't send heartbeats
